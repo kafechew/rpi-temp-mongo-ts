@@ -39,13 +39,13 @@ Temperature is an important water quality parameter. It can affect fish and shri
 
 **Python**
 
-![Python](https://imgur.com/aF3QL96)
+![Python](https://i.imgur.com/aF3QL96.jpeg)
 
 **Mongodb Atlas**
 
 ![Mongodb Atlas](https://i.imgur.com/dgaXy9e.jpeg)
 
-<iframe src="https://www.youtube.com/embed/ncLIKKiMYoU" frameborder="0" allowfullscreen="true"> </iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ncLIKKiMYoU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 **Meteorjs & d3js**
 
