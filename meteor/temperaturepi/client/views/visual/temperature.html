@@ -1,0 +1,19 @@
+<template name="Temperature">
+	<div class="fixed-action-btn">
+		<p><a title="Solve" id="go-mpl" class="btn-large btn-floating teal darken-4 white-text"><i class="material-icons">play_arrow</i></a></p>	
+	</div>
+
+	<h2>Temperature</h2>
+	<div class="row">
+		<div class="col s12 m6 l6">
+			
+		</div>
+		<div class="col s12 m6 l6">
+			<div class="col s12 m12 l12 binpack3d"></div>
+			
+			{{#each Items}}
+				<p>{{temperature}} / {{timestamp}}</p>
+			{{/each}}
+		</div>
+	</div>
+</template>
