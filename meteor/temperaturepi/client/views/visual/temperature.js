@@ -7,67 +7,93 @@ Template.Temperature.onCreated(function() {
 Template.Temperature.onRendered(function() {
 	$('body').append('<script type="text/javascript" src="/js/d3-6-7.js"></script>');
 
-	this.subscribe('all-items-pub', function() {
+	this.subscribe('all-items-pub', function() { 
 		var dataY = Items.find({}, {sort: {date: -1}, limit: 100}).fetch();
 		//console.log(dataY[0].samples[0]);
-		var myData = dataY[0].samples;
+		var dataset = dataY[0].samples;
 
-		if(myData) {
-			// set the dimensions and margins of the graph
-			var margin = {top: 10, right: 10, bottom: 10, left: 10},
-		  	width = 500 - margin.left - margin.right,
-		  	height = 500 - margin.top - margin.bottom; 
+		const yAccessor = (d) => d.temperature;
+		//const dateParser = d3.timeParse("%a %b %d %Y %H:%M:%S %Z");
+		const xAccessor = (d) => d.timestamp;
 
-			// The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
-			var radius = Math.min(width, height) / 2 - margin.top;
+		//console.log(xAccessor(dataset[0]));
 
-			// append the svg object to the div called 'target_area'
-			var svg = d3.select("#target_area")
-				.append("svg")
-			    .attr("width", width)
-			    .attr("height", height)
-			  	.append("g")
-			    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+		let dimensions = {
+		    width: window.innerWidth * 0.5,
+		    height: 600,
+		    margin: {
+		      	top: 115,
+		      	right: 20,
+		      	bottom: 40,
+		      	left: 60,
+		    },
+		};
 
-			var color = d3.scaleOrdinal()
-			.range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+		dimensions.boundedWidth = dimensions.width - dimensions.margin.left - dimensions.margin.right;
+		dimensions.boundedHeight = dimensions.height - dimensions.margin.top - dimensions.margin.bottom;
 
-			var arc = d3.arc()
-			.innerRadius(0)
-			.outerRadius(radius);
+		const wrapper = d3
+		.select("#wrapper")
+    	.append("svg")
+    	.attr("width", dimensions.width)
+    	.attr("height", dimensions.height);
 
-			var pie = d3.pie()
-			.sort(null)
-			.value(function (d) {
-			    return d.temperature;
-			});
+    	const bounds = wrapper
+    	.append("g")
+    	.style("transform", `translate(${dimensions.margin.left}px,${dimensions.margin.top}px)`);
 
-			var g = svg.selectAll(".arc")
-		    .data(pie(myData))
-		    .enter().append("g")
-		    .attr("class", "arc");
+    	const yScale = d3
+	    .scaleLinear()
+	    .domain(d3.extent(dataset, yAccessor))
+	    .range([dimensions.boundedHeight, 0]);
 
-		    g.append("path")
-		    .attr("d", arc)
-		    .style("fill", function (d) {
-		        return color(d.data.timestamp);
-		    });
+	    const referenceBandPlacement = yScale(100);
+		const referenceBand = bounds
+		.append("rect")
+		.attr("x", 0)
+		.attr("width", dimensions.boundedWidth)
+		.attr("y", referenceBandPlacement)
+		.attr("height", dimensions.boundedHeight - referenceBandPlacement)
+		.attr("fill", "#ffece6");
 
-		    g.append("svg:title")
-		    .text(function (d) {
-		    	return d.data.timestamp + ": " + d.temperature;
-			});
+		const xScale = d3
+	    .scaleTime()
+	    .domain(d3.extent(dataset, xAccessor))
+	    .range([0, dimensions.boundedWidth]);
 
-			g.append("text")
-		    .attr("transform", function (d) {
-		    	return "translate(" + arc.centroid(d) + ")";
-			})
-		    .attr("dy", ".35em")
-		    .style("text-anchor", "middle")
-		    .text(function (d) {
-		    	return d.data.timestamp;
-			});
-		}
+	    const lineGenerator = d3
+	    .line()
+	    .x((d) => xScale(xAccessor(d)))
+	    .y((d) => yScale(yAccessor(d)))
+	    .curve(d3.curveBasis);
+
+	    const line = bounds
+	    .append("path")
+	    .attr("d", lineGenerator(dataset))
+	    .attr("fill", "none")
+	    .attr("stroke", "Red")
+	    .attr("stroke-width", 2);
+
+	    const yAxisGenerator = d3.axisLeft().scale(yScale);
+  		const yAxis = bounds.append("g").call(yAxisGenerator);
+
+  		const xAxisGenerator = d3.axisBottom().scale(xScale);
+  		const xAxis = bounds
+	    .append("g")
+    	.call(xAxisGenerator.tickFormat(d3.timeFormat("%b,%y")))
+    	.style("transform", `translateY(${dimensions.boundedHeight}px)`);
+
+    	wrapper
+	    .append("g")
+	    .style("transform", `translate(${50}px,${15}px)`)
+	    .append("text")
+	    .attr("class", "title")
+	    .attr("x", dimensions.width / 2)
+	    .attr("y", dimensions.margin.top / 2)
+	    .attr("text-anchor", "middle")
+	    //.text("Temperature ")
+	    .style("font-size", "36px")
+	    .style("text-decoration", "underline");
 	});
 });
 
