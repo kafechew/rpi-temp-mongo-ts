@@ -29,13 +29,13 @@ Temperature is an important water quality parameter. It can affect fish and shri
 
 **Raspberry Pi Zero 2**
 
-![Raspberry Pi & Temperature sensor](https://imgur.com/9uMZ8OB)
+![Raspberry Pi & Temperature sensor](https://i.imgur.com/9uMZ8OB.jpeg)
 
 **DS18B20 Temperature Sensor (Waterproof)**
 
-![DS18B20 Temperature Sensor](https://imgur.com/9ml8Co1)
-![DS18B20 Temperature Sensor](https://imgur.com/YAEm3hK)
-![DS18B20 Temperature Sensor](https://imgur.com/6Gs2Jjw)
+![DS18B20 Temperature Sensor](https://i.imgur.com/9ml8Co1.jpeg)
+![DS18B20 Temperature Sensor](https://i.imgur.com/YAEm3hK.jpeg)
+![DS18B20 Temperature Sensor](https://i.imgur.com/6Gs2Jjw.jpeg)
 
 **Python**
 
@@ -43,13 +43,13 @@ Temperature is an important water quality parameter. It can affect fish and shri
 
 **Mongodb Atlas**
 
-![Mongodb Atlas](https://imgur.com/dgaXy9e)
+![Mongodb Atlas](https://i.imgur.com/dgaXy9e.jpeg)
 
 <iframe src="https://www.youtube.com/embed/ncLIKKiMYoU" frameborder="0" allowfullscreen="true"> </iframe>
 
 **Meteorjs & d3js**
 
-![MeteorJS & D3.JS](https://imgur.com/U3W1G1o)
+![MeteorJS & D3.JS](https://i.imgur.com/U3W1G1o.jpeg)
 
 ### Additional information at the request of participants
 
