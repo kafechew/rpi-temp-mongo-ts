@@ -45,7 +45,7 @@ Temperature is an important water quality parameter. It can affect fish and shri
 
 ![Mongodb Atlas](https://i.imgur.com/dgaXy9e.jpeg)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ncLIKKiMYoU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Temperature Sensing with Raspberry Pi into Mongodb](https://img.youtube.com/vi/ncLIKKiMYoU/0.jpg)](https://www.youtube.com/watch?v=ncLIKKiMYoU)
 
 **Meteorjs & d3js**
 
