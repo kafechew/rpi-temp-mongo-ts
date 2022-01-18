@@ -57,3 +57,4 @@ We help smaller Critical Industries to build a custom industrial automation syst
 
 * [LinkedIn - Kai Chew](https://www.linkedin.com/in/kafechew/)
 * [Descriptive, Predictive & Prescriptive Analytics: Port Operations Case Study](https://www.linkedin.com/pulse/descriptive-predictive-prescriptive-analytics-port-operations-case-/)
+* [Get your hardware here with RM 10 coupon](https://my.cytron.io/referral?referral_id=81802146507541) 
